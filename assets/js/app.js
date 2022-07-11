@@ -4,10 +4,15 @@ const hours = document.getElementById("hours");
 const minutes = document.getElementById("minutes");
 const seconds = document.getElementById("seconds");
 const countdown = document.getElementById("countdown");
+const year = document.getElementById("year");
+const loading = document.getElementById("loading");
 
 const currentYear = new Date().getFullYear();
 
 const newYeartime = new Date(`January 01 ${currentYear + 1} 00:00:00`);
+
+// set background year
+year.innerText = currentYear + 1;
 
 // Functions
 function updateCountdown() {
@@ -27,6 +32,13 @@ function updateCountdown() {
 
 };
 
+// show spinner before countdown
+setTimeout(() => {
+    loading.remove();
+    countdown.style.display = 'flex';
+}, 1000);
+
 // Set Interval lets us choose what function 
 // we want to run and how often
+// runs every secomd
 setInterval(updateCountdown, 1000);
